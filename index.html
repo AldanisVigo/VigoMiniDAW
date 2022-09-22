@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>VigoMiniDAW</title>
+		<script src="index.js" defer></script>
+		<link rel="stylesheet" href="index.css"></link>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</head>
+	<body>
+		<!-- <h1>VigoMiniDAW</h1> -->
+		
+		<div class="sequencer_container">
+			<span id="sequencer_title">VigoMiniDAW</span>
+			<div id="bpm_control">
+				<span id="bpm_label">BPM:</span>
+				<span id="bpm_value">90</span>
+				<input style="background: red;" type="range" id="bpm_slider" min="1" max="260">
+			</div>
+			<div class="channels"></div>
+			<div class="sequencer" id="sequencer"></div>
+		</div>
+		<button id="pauseplay">PAUSE</button>
+	</body>
+</html>

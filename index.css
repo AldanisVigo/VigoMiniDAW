@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+.sequencer_container{
+	position: relative;
+}
+.sequencer{
+	margin: 10px;
+	border-radius: 30px;
+	border: 1px solid black;
+	padding: 20px;
+	padding-top: 60px;
+	background: black;
+	box-shadow: 1px 2px 3px red;
+}
+
+#sequencer_title{
+	color: white;
+	position: absolute;
+	left: 80%;
+	top: 23px;
+	font-weight: 900;
+	font-size: larger;
+	font-family: Dancing Script;
+}
+
+#bpm_control {
+	display: grid; 
+	grid-template-columns: auto 100px auto;
+	color: white;
+	position: absolute;
+	left: 10%;
+	top: 23px;
+	font-weight: bold;
+}
+
+#bpm_slider{
+	background: red;
+} 
+/** FF*/
+input[type="range"]::-moz-range-progress {
+  background-color: red;
+}
+input[type="range"]::-moz-range-track {  
+  background-color: red;
+}
+/* IE*/
+input[type="range"]::-ms-fill-lower {
+  background-color: red;
+}
+input[type="range"]::-ms-fill-upper {  
+  background-color: red;
+}
+
+
