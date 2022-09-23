@@ -595,7 +595,7 @@ let drawSequencerState = () => {
 								frequency : freq
 							})
 							const gainStage = new GainNode(audioContext)
-							gainStage.gain.value = gain //10%
+							gainStage.gain.value = gain * (mainVolume / 100) //the osc gain * the main volue
 
 							// osc.connect(gainStage)
 							//Create an impulse response buffer for the reverb
@@ -1016,6 +1016,14 @@ const drawSelectedChannelControls = () => {
 	// drawLinkedOscillator(1)
 }
 
+
+//Main Volume Tracking
+let mainVolume = 50
+let volumeSlider = document.getElementById('main_volume_slider')
+volumeSlider.value = mainVolume
+volumeSlider.onchange = (e) => {
+	mainVolume = e.target.value
+}
 
 
 
