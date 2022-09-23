@@ -722,7 +722,7 @@ for(let chan = 0; chan < rows; chan++){
 	// newChan.style.background = 'white'
 	newChan.style.position = 'absolute'
 	newChan.style.left = '82%'
-	newChan.style.top = chan * 40 + 50 + 'px'
+	newChan.style.top = chan * 40 + 60 + 'px'
 	if(selected_channel === chan){
 		newChan.style.background = 'orange'
 		// drawSelectedChannelControls()

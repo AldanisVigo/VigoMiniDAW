@@ -13,6 +13,7 @@ body{
 	position: relative;
 	text-align: center;
 	top: 100px;
+	min-width: 1323px;
 }
 .sequencer{
 	margin: 10px;
@@ -45,7 +46,7 @@ body{
 	grid-template-columns: auto 50px auto;
 	color: red;
 	position: absolute;
-	left: 46em;
+	right: 20em;
 	top: 2rem;
 	font-weight: bold;
 	z-index:100;
@@ -122,7 +123,7 @@ input[type="range"]::-ms-fill-upper {
 	height: 30px;
 	width: 30px;
 	position: absolute;
-	left: 80em;
+	right: 20em;
 	top: 2em;
 	z-index: 2;
 }
