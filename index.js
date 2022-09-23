@@ -509,7 +509,7 @@ sequencerState = fillSequencerState(rows,cols)
 
 let sequencer = document.getElementById('sequencer');
 let sequencerFractions = new Array(cols).fill('1fr').join(' ')
-console.log(sequencerFractions)
+// console.log(sequencerFractions)
 sequencer.style.display = 'grid'
 sequencer.style.gridTemplateColumns = sequencerFractions
 sequencer.style.margin = '10px'
@@ -537,7 +537,7 @@ bpmSlider.onchange = (e) => {
 
 const toggleStep = (r,c) => {
 	try{
-		console.log(`Settting step at ${r},${c} to ${!sequencerState[r][c]}`)
+		// console.log(`Settting step at ${r},${c} to ${!sequencerState[r][c]}`)
 		sequencerState[r][c] = !sequencerState[r][c]
 		drawSequencerState()
 		// drawVigoDaw()
@@ -731,7 +731,7 @@ for(let chan = 0; chan < rows; chan++){
 	// newChan.style.content = `${chan++}`
 	newChan.innerText = `${chan + 1}`
 	newChan.onclick = () => {
-		console.log("Switching to channel " + chan)
+		// console.log("Switching to channel " + chan)
 		channel_selection_controls.forEach(chan=>{
 			if(chan != newChan){
 				chan.style.background = 'black';
