@@ -662,7 +662,7 @@ let drawSequencerState = () => {
 //Variables to keep track of sequencer state
 let intervalClock
 let paused = true
-let playhead = 0;
+let playhead = -1;
 let pausePlayBtn = document.getElementById('pauseplay')
 
 //Handle clicks on the Play / Pause button
@@ -878,7 +878,7 @@ const drawPlayheadTracker = () => {
 	//Create a range input that will go between 0 and cols
 	playheadTracker = document.createElement('input')
 	playheadTracker.type = 'range'
-	playheadTracker.min = 0
+	playheadTracker.min = -1
 	playheadTracker.max = cols
 	playheadTracker.classList.add('playhead_tracker')
 	playheadTracker.onchange = (e) => {
