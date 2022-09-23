@@ -10,15 +10,20 @@
 		<!-- <h1>VigoMiniDAW</h1> -->
 		
 		<div class="sequencer_container">
-			<span id="sequencer_title">VigoMiniDAW</span>
+			<span id="sequencer_title">CodeUp Sequencer</span>
 			<div id="bpm_control">
 				<span id="bpm_label">BPM:</span>
-				<span id="bpm_value">90</span>
-				<input style="background: red;" type="range" id="bpm_slider" min="1" max="260">
+				<span id="bpm_value">260</span>
+				<input style="background: red;" type="range" id="bpm_slider" min="1" max="600">
 			</div>
-			<div class="channels"></div>
-			<div class="sequencer" id="sequencer"></div>
+			<button id="pauseplay" class="pause"></button>
+			<div class="chanseq">
+				<div class="channels">
+					<div class="channel_controls">
+					</div>
+				</div>
+				<div class="sequencer" id="sequencer"></div>
+			</div>
 		</div>
-		<button id="pauseplay">PAUSE</button>
 	</body>
 </html>
