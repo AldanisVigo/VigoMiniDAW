@@ -519,7 +519,7 @@ sequencer.style.borderRadius = '30px'
 let bpmSlider = document.getElementById('bpm_slider')
 bpmSlider.style.background = 'red'
 
-let bpm = 260;
+let bpm = 600;
 bpmSlider.value = bpm
 
 
