@@ -880,6 +880,7 @@ const drawPlayheadTracker = () => {
 	playheadTracker.type = 'range'
 	playheadTracker.min = -1
 	playheadTracker.max = cols
+	playheadTracker.value = -1
 	playheadTracker.classList.add('playhead_tracker')
 	playheadTracker.onchange = (e) => {
 		//Move the playhead to the new position
