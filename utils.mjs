@@ -96,16 +96,16 @@ export const initializeSequencerState = (rows,cols) => {
     //Genrate the style for the sequencer parent element
 
     //set it to display as a grid
-    sequencer.style.display = 'grid' 
+    // sequencer.style.display = 'grid' 
 
     //assign the value we generated prior to the grid-template-colums
     sequencer.style.gridTemplateColumns = sequencerFractions 
 
     //give it a margin of 10px
-    sequencer.style.margin = '10px'
+    // sequencer.style.margin = '10px'
 
     //give it a border radius of 30px
-    sequencer.style.borderRadius = '30px'
+    // sequencer.style.borderRadius = '30px'
 
     return sequencerState
 }
@@ -116,32 +116,23 @@ export const initializeSequencerState = (rows,cols) => {
 */
 export const generateStepElement = (r,c,curStepState,playhead) => {
     const step = document.createElement('button')
-    step.style.borderRadius = '10px'
+    // step.style.borderRadius = '10px'
     step.classList.add(`step_${r}_${c}`)
-    step.style.height = '40px'
+    step.classList.add('sequencer_step')
     step.style.background = curStepState ? playhead == c ? 'purple' : 'red' : 'none'
-    
+
     //Draw the bar markers
     if((c + 1) % 4 === 0){
         step.style.borderRight = '2px dashed red'
-        // step.nextSibling != null ? step.nextSibling.style.borderLeft = '2px dashed red' : ()=>{}
     }else if (c  % 4 === 0){
         step.style.borderLeft = '2px dashed red'
     }
 
     //If the playhead is on the current step
     if(playhead === c){
-        //if the current step is on give it a purple border, if not give it an orange border
-        step.style.border = curStepState ? '3px groove purple' : '3px groove orange'
-        
-        //Give it an orange outer blur
-        step.style.boxShadow = '0px 0px 10px orange'
-
-        //If the current step is on 
+        if(curStepState === true) step.classList.add('purple_step')
+        else step.classList.add('orange_step')
     }
-
-    //Apply box shadow to the step depending on it's state and the position of the playhead
-    step.style.boxShadow = curStepState ? playhead == c ? '0px 0px 20px purple' : '0px 0px 10px hotpink' : 'none'
 
     return step
 }
@@ -156,14 +147,7 @@ export const toggleStep = (r,c,sequencerState,drawSequencerState) => {
 
 export const generateChannelControlButton = (chan) => {
     let newChan = document.createElement('div')
-    newChan.style.border = '1px groove white'
-    newChan.style.width = '100px'
-    newChan.style.margin = '0px'
-    newChan.style.height = '40px'
-    newChan.style.position = 'absolute'
-    newChan.style.left = '82%'
-    newChan.style.top = chan * 40 + 60 + 'px'
-    newChan.classList.add(['channel_strip'])
+    newChan.classList.add(['channel_selection_button'])
     newChan.innerText = `${chan + 1}`
     return newChan
 }

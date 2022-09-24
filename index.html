@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>VigoMiniDAW</title>
+		<title>Codeup Sequencer</title>
 		<script src="index.mjs" type="module" defer crossorigin="anonymous"></script>
-		<link rel="stylesheet" href="index.css"></link>
+		<!-- <link rel="stylesheet" href="index.css"></link> -->
+		<link rel="stylesheet" href="sequencer.css"></link>
+		<link rel="stylesheet" href="sliders.css"></link>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	</head>
 	<body>
@@ -14,7 +16,7 @@
 			<div id="bpm_control">
 				<span id="bpm_label">BPM:</span>
 				<span id="bpm_value">260</span>
-				<input style="background: red;" type="range" id="bpm_slider" min="1" max="600">
+				<input type="range" id="bpm_slider" min="1" max="600">
 			</div>
 			<button id="pauseplay" class="play"></button>
 			<label for="main_volume_slider" id="main_volume">
@@ -22,10 +24,13 @@
 				<input type="range" id="main_volume_slider" name="main_volume_slider" min="0" max="100"/>
 			</label>
 			<div class="chanseq">
-				<div class="channels">
-					<div class="channel_controls">
-					</div>
+				<div class="channel_controls">
+				
 				</div>
+				<div class="channels">
+					
+				</div>
+				
 				<div class="sequencer" id="sequencer"></div>
 			</div>
 		</div>

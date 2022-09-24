@@ -1,0 +1,205 @@
+/*
+    Google Fonts Imports
+*/
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+
+/*
+    //Variables
+*/
+
+:root {
+    --title-color : #F5FFEF;
+    --title-font : Dancing Script;
+    --title-shadow-color: white;
+    --title-shadow-radius: 10px;
+    --sequencer-background-color : linear-gradient(to bottom, black, orange, black);
+    --channel-selection-button-border : 1px solid white;
+    --channel-selection-button-background-color : white;
+    --channel-selection-button-color : black;
+}
+
+label{
+    color: white;
+}
+
+
+.sequencer_container{
+    background: var(--sequencer-background-color);
+    padding: 20px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-areas: "title pauseplay bpm mainvolume"
+                         "chanseq chanseq chanseq chanseq";
+}
+
+#sequencer_title{
+    font-family: var(--title-font);
+    font-size: x-large;
+    grid-area: title;
+    color: var(--title-color);
+    margin-bottom: 20px;
+    text-shadow: 0px 0px var(--title-shadow-radius) var(--title-shadow-color);
+}
+
+/*
+    BPM Control
+*/
+#bpm_control{
+    grid-area: bpm;
+}
+#bpm_label{
+    color: white;
+}
+#bpm_value{
+    
+}
+#bpm_slider{
+
+}
+
+/* Play / Pause Button */
+#pauseplay{
+	border-radius: 100%;
+	height: 30px;
+	width: 30px;
+    grid-area: pauseplay;
+}
+
+#pauseplay:hover{
+	cursor: pointer;
+}
+
+#pauseplay.play{
+	clip-path: polygon(0% 0%, 100% 50%, 0% 100%, 0% 0%);
+}
+
+#pauseplay.pause{
+	clip-path: polygon(0% 0%, 33% 0%, 33% 100%, 0% 100%, 0% 0%,66% 0%,66% 100%,100% 100%,100% 0%,66% 0%);
+}
+
+/*
+    Main Volume Control
+*/
+#main_volume{
+    grid-area: mainvolume;
+    color: white;
+}
+#main_volume_slider{
+
+}
+
+/*
+    Channel and Sequencer Container
+*/
+.chanseq{
+    display: grid;
+    grid-template-areas: "channel_controls channels sequencer"
+                         "channel_controls channels playhead_tracker";
+    grid-area: chanseq;
+}
+
+/*
+    Channels Container
+*/
+.channels{
+    display: grid;
+    /* grid-area: channels; */
+    /* grid-tempate-columns: 1fr 2fr; */
+}
+
+.channel_controls{
+    diplay: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+}
+
+.oscillator_stage{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    margin: 10px;
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 4px;
+    tex-align: left;
+}
+
+.oscillator_wave_selector{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Channel Selection Buttons */
+.channel_selection_button {
+    border: var(--channel-selection-button-border);
+    background: var(--channel-selection-button-background-color);
+    color: var(--channel-selection-button-color);
+    width: 100px;
+    margin: 0px;
+    padding: 0;
+    /* height: 30px; */
+    border-radius: 10px;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+}
+
+.channel_selection_button:hover{
+    cursor: pointer;
+    background: gray;
+}
+
+.selected_channel_button{
+    background: orange;
+    border: 1px solid black;
+    color: white;
+}
+
+
+/* Sequencer */
+#sequencer{
+    display: grid;
+    margin: 0px;
+    margin-left: 8px;
+    grid-area: sequencer;
+    overflow-x: scroll;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+#sequencer::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.sequencer {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Sequencer Steps */
+.sequencer_step{
+    height: 40px;
+    border-radius: 10px;
+    background: none;
+    margin: 0;
+    padding: 12px;
+}
+
+.purple_step{
+    box-shadow: 0px 0px 10px purple;
+    border: 0.1px groove purple;
+    background: purple;
+}
+
+.orange_step{
+    box-shadow: 0px 0px 10px orange;
+    border: 1px groove orange;
+    background: red;
+}
+
+.playhead_tracker{
+    margin-top: 30px !important;
+    grid-area: playhead_tracker;
+}

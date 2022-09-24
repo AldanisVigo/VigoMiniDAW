@@ -161,7 +161,7 @@ const initializeBPMControls = () => {
 
     //set the style of the bpm slider
     //set the slider's background to red
-    bpmSlider.style.background = 'red'
+    // bpmSlider.style.background = 'red'
 
     //assign the value of the slider to the variable above
     bpmSlider.value = bpm
@@ -203,7 +203,7 @@ const animatePlayhead = () => {
 
 const initializeChannelSelectionControls = () => {
     //set the channels container position to relative
-    channels.style.position = 'relative'
+    // channels.style.position = 'relative'
 
     //iterate through each available channel
     for(let chan = 0; chan < rows; chan++){
@@ -213,19 +213,22 @@ const initializeChannelSelectionControls = () => {
         //if the selected channel is the current channel
         if(selected_channel === chan){
             //set it's background to orange to indicate it's selected
-            chanSelectorButton.style.background = 'orange' 
+            // chanSelectorButton.style.background = 'orange'
+            chanSelectorButton.classList.add('selected_channel_button') 
         }
 
         //when the channel selector button is clicked
         chanSelectorButton.onclick = () => {
             channel_selection_controls.forEach(curSlectionControl=>{ //iterate through the selection controls
                 if(curSlectionControl != chanSelectorButton){ //if the control is not the current control
-                    curSlectionControl.style.background = 'black'; //set it's background to black
+                    // curSlectionControl.style.background = 'black'; //set it's background to black
+                    curSlectionControl.classList.remove('selected_channel_button')
                 }
             })
 
             //set the current selector button's background to orange
-            chanSelectorButton.style.background = 'orange'
+            // chanSelectorButton.style.background = 'orange'
+            chanSelectorButton.classList.toggle('selected_channel_button')
             selected_channel = chan
             drawSelectedChannelControls()
     
@@ -291,7 +294,7 @@ let generateChannelChains = () => {
 	// drawSelectedChannelControls()
 }
 
-let playheadTracker;
+let playheadTracker
 const drawPlayheadTracker = () => {
 	//Create a range input that will go between 0 and cols
 	playheadTracker = document.createElement('input')
@@ -303,7 +306,14 @@ const drawPlayheadTracker = () => {
 	playheadTracker.onchange = (e) => {
 		//Move the playhead to the new position
 		playhead = e.target.value
-		// drawSequencerState()
+        // if(paused){
+        //     paused = false
+        //     drawSequencerState()
+        //     paused = true
+        // }else{
+		//     drawSequencerState()
+        // }
+        drawSequencerState()
 	}
 
 	sequencer.parentElement.appendChild(playheadTracker)
@@ -317,7 +327,7 @@ const drawSelectedChannelControls = () => {
 	// console.log("drawing channel controls for channel " + Number(selected_channel + 1))
 	// console.log(channels_chains)
 	if(channels_chains.length == 0) return
-	let currentChain = channels_chains[selected_channel]
+	// let currentChain = channels_chains[selected_channel]
 	// console.log("Current Chain:")
 	// console.log(currentChain)
 	
@@ -352,9 +362,17 @@ const drawSelectedChannelControls = () => {
 	const drawLinkedOscillator = (index) => {
 		//Create the oscillator container element
 		let oscillatorContainerElement = document.createElement('div')
+        oscillatorContainerElement.classList.add('oscillator_stage')
 		
 		//Create the oscillator wave type type selector
+        let oscillatorWaveSelectLabel = document.createElement('label')
+        oscillatorWaveSelectLabel.classList.add('oscillator_wave_selector')
+        oscillatorWaveSelectLabel.innerText = "Wave Type:"
+        oscillatorWaveSelectLabel.htmlFor = 'oscillator_vave_selector_' + index
+
 		let oscillatorWaveSelectElement = document.createElement('select')
+        oscillatorWaveSelectElement.id = 'oscillator_wave_selector_' + index
+        oscillatorWaveSelectLabel.appendChild(oscillatorWaveSelectElement)
 
 		//Draw the wave selector
 		addOscillatorWaveSelectionOptions(oscillatorWaveSelectElement,index)
@@ -372,7 +390,7 @@ const drawSelectedChannelControls = () => {
 		let oscillatorFrequencyDisplay = document.createElement("input")
 		oscillatorFrequencyDisplay.placeholder = 'Freq'
 		oscillatorFrequencyDisplay.value = `${channels_chains[selected_channel][index].freq || 80} Hz`
-		oscillatorFrequencyDisplay.style.color = 'black'
+		// oscillatorFrequencyDisplay.style.color = 'black'
 		
 		//Listen for oscillator frequency changes
 		oscillatorFrequencySliderElement.onchange = (e) => {
@@ -405,7 +423,15 @@ const drawSelectedChannelControls = () => {
 		}
 
 		//Create the oscillator enable/disable control
+        let oscillatorEnableDisableElementContainer = document.createElement('div')
+
+        let oscillatorEnableDisableElementLabel = document.createElement('label')
+        oscillatorEnableDisableElementLabel.htmlFor = 'oscillator_enable_' + index
+        // oscillatorEnableDisableElementLabel.style.color = 'white'
+        oscillatorEnableDisableElementLabel.innerText = "Oscillator 0 - On/Off: "
+
 		let oscillatorEnableDisableElement = document.createElement('input')
+        oscillatorEnableDisableElement.id = 'oscillator_enable_' + index
 		oscillatorEnableDisableElement.type = 'checkbox'
 		oscillatorEnableDisableElement.checked = channels_chains[selected_channel][index].enabled
 		oscillatorEnableDisableElement.onchange = (e) => {
@@ -413,19 +439,15 @@ const drawSelectedChannelControls = () => {
 			channels_chains[selected_channel][index].enabled = endis
 		}
 
+        oscillatorEnableDisableElementContainer.appendChild(oscillatorEnableDisableElementLabel)
+        oscillatorEnableDisableElementContainer.appendChild(oscillatorEnableDisableElement)
 
 		//Add the oscillator wave select element to the container
-		oscillatorContainerElement.appendChild(oscillatorEnableDisableElement)
-		oscillatorContainerElement.appendChild(oscillatorWaveSelectElement)
+		oscillatorContainerElement.appendChild(oscillatorEnableDisableElementContainer)
+		oscillatorContainerElement.appendChild(oscillatorWaveSelectLabel)
 		oscillatorContainerElement.appendChild(oscillatorFrequencySliderElement)
 		oscillatorContainerElement.appendChild(oscillatorFrequencyDisplay)
 		oscillatorContainerElement.appendChild(oscillatorGainSliderElement)
-
-		//Position oscillator container element
-		oscillatorContainerElement.style.position = 'absolute'
-		oscillatorContainerElement.style.left = '60px'
-		oscillatorContainerElement.style.top = (40 * index) + 20 + 'px'
-
 
 		channelControlsContainer.innerHTML = ''
 		channelControlsContainer.appendChild(oscillatorContainerElement)
